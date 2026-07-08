@@ -666,7 +666,7 @@ static void hidEmuProcessBmi270Mouse(void)
 
     gain_div = (healthSafeMode != 0) ? HEALTH_SAFE_GAIN_DIV : BMI270_TILT_GAIN_DIV;
     mouse_x = hidEmuClampMouseStep((int16_t)(tilt_y / gain_div));
-    mouse_y = hidEmuClampMouseStep((int16_t)(tilt_x / gain_div));
+    mouse_y = hidEmuClampMouseStep((int16_t)(-tilt_x / gain_div));
     displayMouseX = mouse_x;
     displayMouseY = mouse_y;
 
@@ -914,7 +914,7 @@ static void hidEmuProcessTouchPageSwitch(void)
         {
             touchPressTicks++;
         }
-        if((touchPressTicks >= TOUCH_LONG_PRESS_TICKS) && (touchLongHandled == 0U))
+        if((touchPressTicks >= TOUCH_LONG_PRESS_TICKS) && (touchLongHandled == 0U) && (displayPage == DISPLAY_PAGE_STATUS))
         {
             hidEmuTogglePresenterMode();
             touchLongHandled = 1;

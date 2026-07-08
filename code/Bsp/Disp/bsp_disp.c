@@ -139,7 +139,7 @@ void BSP_Disp_Init(void)
     }
 
     lcd_write_cmd(ST7789_MADCTL);
-    lcd_write_u8(ST7789_MADCTL_MX | ST7789_MADCTL_MY | ST7789_MADCTL_RGB);
+    lcd_write_u8(ST7789_MADCTL_RGB);
 
     lcd_write_cmd(0xB7);
     lcd_write_u8(0x35);
