@@ -1148,8 +1148,8 @@ static void hidEmuUpdateStatusPage(void)
                                     displayBleConnected ? BSP_DISP_COLOR_GREEN : BSP_DISP_COLOR_YELLOW);
             break;
         case 1:
-            BSP_Disp_DrawStatusLine(1, "HID", hidMouseReportEnabled ? "READY" : "WAIT",
-                                    hidMouseReportEnabled ? BSP_DISP_COLOR_GREEN : BSP_DISP_COLOR_YELLOW);
+            BSP_Disp_DrawStatusLine(1, "HID", (hidMouseReportEnabled || ((displayBleConnected != 0) && (hidMouseReportSendCount != 0) && (hidMouseLastReportStatus == SUCCESS))) ? "READY" : "WAIT",
+                                    (hidMouseReportEnabled || ((displayBleConnected != 0) && (hidMouseReportSendCount != 0) && (hidMouseLastReportStatus == SUCCESS))) ? BSP_DISP_COLOR_GREEN : BSP_DISP_COLOR_YELLOW);
             break;
         case 2:
             BSP_Disp_DrawStatusLine(2, "IMU", bmi270Ready ? "OK" : "ERR",
